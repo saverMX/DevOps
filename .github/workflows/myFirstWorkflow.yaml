@@ -18,3 +18,17 @@ jobs:
                   echo "Please Alex is friday let me scape" >> Touched.yaml
                   cat Touched.yaml
                   pwd
+    mySecondJob:
+                needs: [myfirstjob]
+                name: Second Job
+                runs-on: macos-latest
+                steps: 
+                - name: Step One
+                  run: date
+    myThirdJob:
+              name: Third Job
+              runs-on: windows-latest
+              steps: 
+                - name: Step One
+                  run: date
+          
