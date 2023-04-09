@@ -11,24 +11,29 @@ jobs:
     name: testing phase
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: Use NodeJS 16.10
       uses: actions/setup-node@v3
-        with:
+      with: 
           node-version: '16.x'
-      run: npm ci
-      run: npm test
+    - name: install & test
+      run: | 
+        npm ci
+        npm test
   build: 
       name: building phase
       runs-on: ubuntu-latest
       needs: [test]
       steps:
-      - name: Use Node.js NodeJs 16
-        uses: actions/checkout@v3 
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16
         uses: actions/setup-node@v3
-          with:
-              node-version: ${{ matrix.node-version }}
-        run: npm ci
-        run: npm run build --if-present
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install & building
+        run: | 
+              npm ci
+              npm run build --if-present
         
       
               
