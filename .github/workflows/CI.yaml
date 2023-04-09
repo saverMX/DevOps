@@ -1,1 +1,38 @@
 
+name: CI
+
+on:
+  push:
+  pull_request:
+  
+# Define the jobs we want to run for this project
+jobs:
+  test:
+    name: testing phase
+    runs-on: ubuntu-latest
+    steps:
+          - uses: actions/checkout@v3
+          - name: Use NodeJS 16.10
+            uses: actions/setup-node@v3
+            with:
+              node-version: '16.x'
+          - run: npm ci
+          - run: npm test
+  build: 
+      name: building phase
+      runs-on: ubuntu-latest
+      needs: [test]
+      steps:
+        - uses: actions/checkout@v3
+        - name: Use Node.js NodeJs 16
+        - uses: actions/setup-node@v3
+          with:
+              node-version: ${{ matrix.node-version }}
+        - run: npm ci
+        - run: npm run build --if-present
+        
+      
+              
+           
+          
+    
