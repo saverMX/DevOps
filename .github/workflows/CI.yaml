@@ -18,7 +18,7 @@ jobs:
           node-version: '16.x'
     - name: install & test
       run: | 
-        cd ~/capstone_project/hello-world
+        cd /capstone_project/hello-world
         npm i
         npm test
   build: 
@@ -33,7 +33,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: install & building
         run: | 
-              cd ~/capstone_project/hello-world
+              cd /capstone_project/hello-world
               npm i
               npm run build --if-present
         
