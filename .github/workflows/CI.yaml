@@ -18,7 +18,7 @@ jobs:
           node-version: '16.x'
     - name: install & test
       run: | 
-        npm ci
+        npm i
         npm test
   build: 
       name: building phase
@@ -32,7 +32,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: install & building
         run: | 
-              npm ci
+              npm i
               npm run build --if-present
         
       
